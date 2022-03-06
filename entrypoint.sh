@@ -54,7 +54,7 @@ COMMENT_ADDED=$(curl -i -Ss -H "Authorization: token $GITHUB_TOKEN" "https://api
 
 # Check if the comment was successfully added
 echo $COMMENT_ADDED
-echo $COMMENT_ADDED | head -n1 | grep "201 Created" > /dev/null
+echo $COMMENT_ADDED | head -n1 | grep "201" > /dev/null
 if [[ $? -eq 1 ]]; then
   echo "Error creating comment:"
   echo "$COMMENT_ADDED" | sed '1,/^\r$/d'
@@ -69,7 +69,7 @@ LABELS='{"labels":["merge-milestone","merge-milestone:'$MERGED_COUNT'"]}'
 LABELS_ADDED=$(curl -i -Ss -H "Authorization: token $GITHUB_TOKEN" "https://api.github.com/repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/labels" -d $LABELS)
 
 # Check if the labels were successfully added
-echo $LABELS_ADDED | head -n1 | grep "200 OK" > /dev/null
+echo $LABELS_ADDED | head -n1 | grep "200" > /dev/null
 if [[ $? -eq 1 ]]; then
   echo "Error Adding Labels:"
   echo "$LABELS_ADDED" | sed '1,/^\r$/d'
