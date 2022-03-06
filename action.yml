@@ -10,8 +10,8 @@ inputs:
   merged_5:
     description: 'fifth'
     required: true
-  merged_15:
-    description: 'fifteenth'
+  merged_13:
+    description: 'thirteen'
     required: true
   merged_50:
     description: 'fifty'
