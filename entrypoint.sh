@@ -53,6 +53,7 @@ POSTBODY=$(echo $COMMENT | jq -c -R '. | {"body": .}')
 COMMENT_ADDED=$(curl -i -Ss -H "Authorization: token $GITHUB_TOKEN" "https://api.github.com/repos/$GITHUB_REPOSITORY/issues/$ISSUE_NUMBER/comments" -d "$POSTBODY")
 
 # Check if the comment was successfully added
+echo $COMMENT_ADDED
 echo $COMMENT_ADDED | head -n1 | grep "201 Created" > /dev/null
 if [[ $? -eq 1 ]]; then
   echo "Error creating comment:"
